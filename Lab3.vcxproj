@@ -127,13 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="editor.h" />
+    <ClInclude Include="Editors.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab3.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="shape.h" />
+    <ClInclude Include="Shapes.h" />
+    <ClInclude Include="shape_editor.h" />
+    <ClInclude Include="shape_objects_editor.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab3.cpp" />
+    <ClCompile Include="shape.cpp" />
+    <ClCompile Include="ShapeEditor.cpp" />
+    <ClCompile Include="shape_objects_editor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab3.rc" />

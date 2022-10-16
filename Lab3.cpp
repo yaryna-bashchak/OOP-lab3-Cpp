@@ -3,6 +3,7 @@
 
 #include "framework.h"
 #include "Lab3.h"
+#include "shape_objects_editor.h"
 
 #define MAX_LOADSTRING 100
 
@@ -10,6 +11,13 @@
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
+
+const int ARRAY_SIZE = 103;
+int COUNT_OF_OBJECTS = 0;
+int* pcount = &COUNT_OF_OBJECTS;
+
+Shape** pcshape;
+ShapeObjectsEditor object(ARRAY_SIZE, pcount);
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -26,6 +34,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: Place code here.
+    pcshape = new Shape * [ARRAY_SIZE];
 
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -52,10 +61,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
+    for (size_t i = 0; i < COUNT_OF_OBJECTS; i++)
+    {
+        delete pcshape[i];
+    }
+    delete[]pcshape;
+
     return (int) msg.wParam;
 }
-
-
 
 //
 //  FUNCTION: MyRegisterClass()
@@ -121,16 +134,43 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - post a quit message and return
 //
 //
+
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_LBUTTONDOWN:
+        object.OnLBdown(hWnd);
+        break;
+    case WM_LBUTTONUP:
+        object.OnLBup(hWnd, pcshape);
+        break;
+    case WM_MOUSEMOVE:
+        object.OnMouseMove(hWnd);
+        break;
+    case WM_PAINT:
+        object.OnPaint(hWnd, pcshape);
+        break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
+            int wmEvent = HIWORD(wParam);
             // Parse the menu selections:
             switch (wmId)
             {
+            case IDM_POINT:
+                object.StartPointEditor(hWnd);
+                break;
+            case IDM_LINE:
+                object.StartLineEditor(hWnd);
+                break;
+            case IDM_RECT:
+                object.StartRectEditor(hWnd);
+                break;
+            case IDM_ELLIPSE:
+                object.StartEllipseEditor(hWnd);
+                break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
@@ -140,14 +180,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
-        }
-        break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
-            EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:
