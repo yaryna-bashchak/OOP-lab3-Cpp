@@ -6,8 +6,6 @@ class ShapeObjectsEditor
 {
 private:
 	int* pCOUNT_OF_OBJECTS;
-	const int ARRAY_SIZE = 103;
-	Shape** pcshape = new Shape * [ARRAY_SIZE];
 public:
 	ShapeObjectsEditor(void);
 	void StartPointEditor(HWND hWnd);

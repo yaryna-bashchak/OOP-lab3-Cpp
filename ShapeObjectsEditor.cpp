@@ -4,7 +4,8 @@
 #include "Shape.h"
 #include "editors.h"
 
-Shape** pcshape;
+const int ARRAY_SIZE = 103;
+Shape* pcshape[ARRAY_SIZE];
 ShapeEditor* pse = NULL;
 
 int COUNT_OF_OBJECTS = 0;
