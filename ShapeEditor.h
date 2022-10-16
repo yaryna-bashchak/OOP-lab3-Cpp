@@ -1,5 +1,5 @@
 #pragma once
-#include "editor.h"
+#include "Editor.h"
 
 class ShapeEditor : public Editor
 {

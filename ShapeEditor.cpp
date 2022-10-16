@@ -1,6 +1,6 @@
 #include "framework.h"
-#include "shape_editor.h"
-#include "Editors.h"
+#include "ShapeEditor.h"
+#include "editors.h"
 
 ShapeEditor::ShapeEditor(HWND hwnd) {
 	hWnd = hwnd;

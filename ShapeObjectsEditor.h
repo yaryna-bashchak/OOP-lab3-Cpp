@@ -1,6 +1,6 @@
 #pragma once
-#include "shape.h"
-#include "shape_editor.h"
+#include "Shape.h"
+#include "ShapeEditor.h"
 
 class ShapeObjectsEditor
 {

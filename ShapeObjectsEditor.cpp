@@ -1,8 +1,8 @@
 #include "framework.h"
-#include "shape_objects_editor.h"
-#include "editor.h"
-#include "shape.h"
-#include "Editors.h"
+#include "ShapeObjectsEditor.h"
+#include "Editor.h"
+#include "Shape.h"
+#include "editors.h"
 
 ShapeEditor* pse = NULL;
 

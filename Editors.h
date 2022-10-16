@@ -1,6 +1,6 @@
 #pragma once
-#include "Shapes.h"
-#include "shape_editor.h"
+#include "shapes.h"
+#include "ShapeEditor.h"
 
 /////////////////////////////////////////////////////
 
