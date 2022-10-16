@@ -18,6 +18,11 @@ void ShapeEditor::UpdateXY()
 	yend = pt.y;
 }
 
+int ShapeEditor::Check() {
+	if (xstart == 0 && ystart == 0 && xend == 0 && yend == 0) return 0;
+	else return 1;
+}
+
 void ShapeEditor::OnLBdown(HWND hWnd)
 {
 	UpdateXY();

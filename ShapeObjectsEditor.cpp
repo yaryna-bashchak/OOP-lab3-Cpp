@@ -4,11 +4,13 @@
 #include "Shape.h"
 #include "editors.h"
 
+Shape** pcshape;
 ShapeEditor* pse = NULL;
 
-ShapeObjectsEditor::ShapeObjectsEditor(int size, int* p) {
-	ARRAY_SIZE = size;
-	pCOUNT_OF_OBJECTS = p;
+int COUNT_OF_OBJECTS = 0;
+
+ShapeObjectsEditor::ShapeObjectsEditor(void) {
+	pCOUNT_OF_OBJECTS = &COUNT_OF_OBJECTS;
 };
 
 void ShapeObjectsEditor::StartPointEditor(HWND hWnd) {
@@ -31,16 +33,16 @@ void ShapeObjectsEditor::OnLBdown(HWND hWnd) {
 	if (pse)
 		pse->OnLBdown(hWnd);
 };
-void ShapeObjectsEditor::OnLBup(HWND hWnd, Shape* p[]) {
+void ShapeObjectsEditor::OnLBup(HWND hWnd) {
 	if (pse) {
-		pse->OnLBup(hWnd, p, *pCOUNT_OF_OBJECTS);
+		pse->OnLBup(hWnd, pcshape, *pCOUNT_OF_OBJECTS);
 		(*pCOUNT_OF_OBJECTS)++;
 	}
 };
 void ShapeObjectsEditor::OnMouseMove(HWND hWnd) {
-	if (pse && pse -> Check())
+	if (pse)
 		pse->OnMouseMove(hWnd);
 };
-void ShapeObjectsEditor::OnPaint(HWND hWnd, Shape* p[]) {
-	pse->OnPaint(hWnd, p, *pCOUNT_OF_OBJECTS);
+void ShapeObjectsEditor::OnPaint(HWND hWnd) {
+	pse->OnPaint(hWnd, pcshape, *pCOUNT_OF_OBJECTS);
 };

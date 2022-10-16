@@ -12,12 +12,7 @@ HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
-const int ARRAY_SIZE = 103;
-int COUNT_OF_OBJECTS = 0;
-int* pcount = &COUNT_OF_OBJECTS;
-
-Shape** pcshape;
-ShapeObjectsEditor object(ARRAY_SIZE, pcount);
+ShapeObjectsEditor object;
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -34,7 +29,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: Place code here.
-    pcshape = new Shape * [ARRAY_SIZE];
 
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -60,12 +54,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
-
-    for (size_t i = 0; i < COUNT_OF_OBJECTS; i++)
-    {
-        delete pcshape[i];
-    }
-    delete[]pcshape;
 
     return (int) msg.wParam;
 }
@@ -144,13 +132,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         object.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        object.OnLBup(hWnd, pcshape);
+        object.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:
         object.OnMouseMove(hWnd);
         break;
     case WM_PAINT:
-        object.OnPaint(hWnd, pcshape);
+        object.OnPaint(hWnd);
         break;
     case WM_COMMAND:
         {

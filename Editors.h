@@ -50,11 +50,14 @@ public:
 
 	void OnMouseMove(HWND hWnd)
 	{
-		SetROP2(hdc, R2_NOTXORPEN);
+		if (Check()) {
+			SetROP2(hdc, R2_NOTXORPEN);
 
-		DrawLine();
-		UpdateXY();
-		DrawLine();
+			DrawLine();
+			UpdateXY();
+			DrawLine();
+		}
+		
 	}
 };
 
@@ -87,11 +90,13 @@ public:
 
 	void OnMouseMove(HWND hWnd)
 	{
-		SetROP2(hdc, R2_NOTXORPEN);
+		if (Check()) {
+			SetROP2(hdc, R2_NOTXORPEN);
 
-		DrawRect();
-		UpdateXY();
-		DrawRect();
+			DrawRect();
+			UpdateXY();
+			DrawRect();
+		}	
 	}
 };
 
@@ -128,12 +133,14 @@ public:
 
 	void OnMouseMove(HWND hWnd)
 	{
-		SetROP2(hdc, R2_NOTXORPEN);
+		if (Check()) {
+			SetROP2(hdc, R2_NOTXORPEN);
 
-		DrawEllipse();
-		DrawRect();
-		UpdateXY();
-		DrawEllipse();
-		DrawRect();
+			DrawEllipse();
+			DrawRect();
+			UpdateXY();
+			DrawEllipse();
+			DrawRect();
+		}
 	}
 };
