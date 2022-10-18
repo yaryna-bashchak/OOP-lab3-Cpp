@@ -96,9 +96,9 @@ private:
 	void DrawRect()
 	{
 		MoveToEx(hdc, xend, yend, NULL);
-		LineTo(hdc, xend, 2 * ystart - yend);
-		LineTo(hdc, 2 * xstart - xend, 2 * ystart - yend);
-		LineTo(hdc, 2 * xstart - xend, yend);
+		LineTo(hdc, xend, ystart);
+		LineTo(hdc, xstart, ystart);
+		LineTo(hdc, xstart, yend);
 		LineTo(hdc, xend, yend);
 	}
 public:
@@ -148,14 +148,14 @@ private:
 	void DrawRect()
 	{
 		MoveToEx(hdc, xend, yend, NULL);
-		LineTo(hdc, xend, ystart);
-		LineTo(hdc, xstart, ystart);
-		LineTo(hdc, xstart, yend);
+		LineTo(hdc, xend, 2 * ystart - yend);
+		LineTo(hdc, 2 * xstart - xend, 2 * ystart - yend);
+		LineTo(hdc, 2 * xstart - xend, yend);
 		LineTo(hdc, xend, yend);
 	}
 	void DrawEllipse()
 	{
-		Arc(hdc, xstart, ystart, xend, yend, 0, 0, 0, 0);
+		Arc(hdc, 2 * xstart - xend, 2 * ystart - yend, xend, yend, 0, 0, 0, 0);
 	}
 public:
 	EllipseEditor(HWND hwnd)

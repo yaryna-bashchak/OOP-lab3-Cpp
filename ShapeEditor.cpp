@@ -5,7 +5,7 @@
 ShapeEditor::ShapeEditor(HWND hwnd) {
 	hWnd = hwnd;
 	hdc = GetDC(hWnd);
-	hPen = CreatePen(PS_DOT, 1, 0);
+	hPen = CreatePen(PS_SOLID, 1, 0);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 };
 
