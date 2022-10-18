@@ -15,19 +15,15 @@ ShapeObjectsEditor::ShapeObjectsEditor(void) {
 };
 
 void ShapeObjectsEditor::StartPointEditor(HWND hWnd) {
-	SetWindowText(hWnd, L"Режим вводу крапок");
 	pse = new PointEditor(hWnd);
 };
 void ShapeObjectsEditor::StartLineEditor(HWND hWnd) {
-	SetWindowText(hWnd, L"Режим вводу ліній");
 	pse = new LineEditor(hWnd);
 };
 void ShapeObjectsEditor::StartRectEditor(HWND hWnd) {
-	SetWindowText(hWnd, L"Режим вводу прямокутників");
 	pse = new RectEditor(hWnd);
 };
 void ShapeObjectsEditor::StartEllipseEditor(HWND hWnd) {
-	SetWindowText(hWnd, L"Режим вводу еліпсів");
 	pse = new EllipseEditor(hWnd);
 };
 void ShapeObjectsEditor::OnLBdown(HWND hWnd) {
@@ -47,3 +43,8 @@ void ShapeObjectsEditor::OnMouseMove(HWND hWnd) {
 void ShapeObjectsEditor::OnPaint(HWND hWnd) {
 	pse->OnPaint(hWnd, pcshape, *pCOUNT_OF_OBJECTS);
 };
+
+void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
+	if (pse) 
+		pse->OnInitMenuPopup(hWnd, wParam);
+}

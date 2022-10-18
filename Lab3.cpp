@@ -140,6 +140,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_PAINT:
         object.OnPaint(hWnd);
         break;
+    case WM_INITMENUPOPUP:
+        object.OnInitMenuPopup(hWnd, wParam);
+        break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);

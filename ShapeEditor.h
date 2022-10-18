@@ -16,4 +16,5 @@ public:
 	virtual void OnLBup(HWND, Shape* p[], int) = 0;
 	virtual void OnMouseMove(HWND) = 0;
 	void OnPaint(HWND hWnd, Shape* pcshape[], int COUNT_OF_OBJECTS);
+	virtual void OnInitMenuPopup(HWND, WPARAM) = 0;
 };

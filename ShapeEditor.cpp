@@ -39,3 +39,4 @@ void ShapeEditor::OnPaint(HWND hWnd, Shape* pcshape[], int COUNT_OF_OBJECTS)
 		pcshape[i]->Show(hdc);
 	EndPaint(hWnd, &ps);
 }
+
