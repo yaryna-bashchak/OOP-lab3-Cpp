@@ -5,7 +5,7 @@ class PointShape : public Shape
 {
 public:
 	void Show(HDC hdc) {
-		SelectObject(hdc, hPen);
+		SelectObject(hdc, hPenForPoint);
 		MoveToEx(hdc, xs2, ys2, NULL);
 		LineTo(hdc, xs2, ys2);
 	}
