@@ -4,8 +4,7 @@
 #include "framework.h"
 #include "Lab3.h"
 #include "ShapeObjectsEditor.h"
-#include <commctrl.h>
-#pragma comment(lib, "comctl32.lib")
+#include "Toolbar.h"
 
 #define MAX_LOADSTRING 100
 
@@ -14,22 +13,14 @@ HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
-HWND hwndToolBar = NULL;
-#define IDC_MY_TOOLBAR 1
-#define ID_TOOL_POINT 1
-#define ID_TOOL_LINE 2
-#define ID_TOOL_RECT 3
-#define ID_TOOL_ELLIPSE 4
-
 ShapeObjectsEditor object;
+Toolbar ToolBar;
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-
-void OnCreate(HWND hWnd);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -141,13 +132,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
-        OnCreate(hWnd);
+        ToolBar.OnCreate(hWnd, hInst);
+        break;
+    case WM_SIZE:
+        ToolBar.OnSize(hWnd);
+        break;
+    case WM_NOTIFY:
+        ToolBar.OnNotify(hWnd, wParam, lParam);
         break;
     case WM_LBUTTONDOWN:
-        object.OnLBdown(hWnd);
+        if (ToolBar.press)
+            object.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        object.OnLBup(hWnd);
+        if (ToolBar.press)
+            object.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:
         object.OnMouseMove(hWnd);
@@ -165,22 +164,30 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // Parse the menu selections:
             switch (wmId)
             {
-            case IDM_POINT:
             case ID_TOOL_POINT:
+            case IDM_POINT:
+                ToolBar.OnPress(hWnd, ID_TOOL_POINT);
                 object.StartPointEditor(hWnd);
                 break;
-            case IDM_LINE:
+
             case ID_TOOL_LINE:
+            case IDM_LINE:
+                ToolBar.OnPress(hWnd, ID_TOOL_LINE);
                 object.StartLineEditor(hWnd);
                 break;
-            case IDM_RECT:
+
             case ID_TOOL_RECT:
+            case IDM_RECT:
+                ToolBar.OnPress(hWnd, ID_TOOL_RECT);
                 object.StartRectEditor(hWnd);
                 break;
-            case IDM_ELLIPSE:
+
             case ID_TOOL_ELLIPSE:
+            case IDM_ELLIPSE:
+                ToolBar.OnPress(hWnd, ID_TOOL_ELLIPSE);
                 object.StartEllipseEditor(hWnd);
                 break;
+
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
@@ -219,51 +226,4 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     }
     return (INT_PTR)FALSE;
-}
-
-
-void OnCreate(HWND hWnd)
-{
-    TBBUTTON tbb[6]; //масив опису кнопок вікна Toolbar
-
-    ZeroMemory(tbb, sizeof(tbb));
-    tbb[0].iBitmap = 0; //стандартне зображення
-    tbb[0].fsState = TBSTATE_ENABLED;
-    tbb[0].fsStyle = TBSTYLE_BUTTON; //тип елементу - кнопка
-    tbb[0].idCommand = ID_TOOL_POINT; //цей ID буде у повідомленні WM_COMMAND
-    
-    tbb[1].iBitmap = 1;
-    tbb[1].fsState = TBSTATE_ENABLED;
-    tbb[1].fsStyle = TBSTYLE_BUTTON;
-    tbb[1].idCommand = ID_TOOL_LINE;
-    
-    tbb[2].iBitmap = 2;
-    tbb[2].fsState = TBSTATE_ENABLED;
-    tbb[2].fsStyle = TBSTYLE_BUTTON;
-    tbb[2].idCommand = ID_TOOL_RECT;
-    
-    tbb[3].iBitmap = 3;
-    tbb[3].fsState = TBSTATE_ENABLED;
-    tbb[3].fsStyle = TBSTYLE_BUTTON;
-    tbb[3].idCommand = ID_TOOL_ELLIPSE;
-
-    tbb[4].iBitmap = 0;
-    tbb[4].fsState = TBSTATE_ENABLED;
-    tbb[4].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
-    tbb[4].idCommand = 0;
-
-    tbb[5].iBitmap = 4;
-    tbb[5].fsState = TBSTATE_ENABLED;
-    tbb[5].fsStyle = TBSTYLE_BUTTON;
-    tbb[5].idCommand = IDM_ABOUT;
-
-    hwndToolBar = CreateToolbarEx(hWnd, //батьківське вікно
-        WS_CHILD | WS_VISIBLE | WS_BORDER
-        | WS_CLIPSIBLINGS | CCS_TOP,
-        IDC_MY_TOOLBAR, //ID дочірнього вікна Toolbar
-        5, hInst, IDB_BITMAP1,
-        tbb,
-        6, //кількість кнопок
-        24, 24, 24, 24, //розташування та розміри
-        sizeof(TBBUTTON));
 }

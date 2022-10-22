@@ -137,6 +137,7 @@
     <ClInclude Include="ShapeEditor.h" />
     <ClInclude Include="ShapeObjectsEditor.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Toolbar.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab3.cpp" />
