@@ -144,6 +144,7 @@
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeEditor.cpp" />
     <ClCompile Include="ShapeObjectsEditor.cpp" />
+    <ClCompile Include="Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab3.rc" />

@@ -44,7 +44,7 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd) {
 	pse->OnPaint(hWnd, pcshape, *pCOUNT_OF_OBJECTS);
 };
 
-void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
+void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam, LPARAM id, BOOL press) {
 	if (pse) 
-		pse->OnInitMenuPopup(hWnd, wParam);
+		pse->OnInitMenuPopup(hWnd, wParam, id, press);
 }

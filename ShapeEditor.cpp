@@ -2,6 +2,8 @@
 #include "ShapeEditor.h"
 #include "editors.h"
 
+UINT IDS[] = { IDM_POINT, IDM_LINE, IDM_RECT, IDM_ELLIPSE };
+
 ShapeEditor::ShapeEditor(HWND hwnd) {
 	hWnd = hwnd;
 	hdc = GetDC(hWnd);
@@ -40,3 +42,15 @@ void ShapeEditor::OnPaint(HWND hWnd, Shape* pcshape[], int COUNT_OF_OBJECTS)
 	EndPaint(hWnd, &ps);
 }
 
+void ShapeEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam, LPARAM id, BOOL press) {
+	HMENU hMenu, hSubMenu;
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParam == hSubMenu)
+	{
+		for (LPARAM ID : IDS)
+			CheckMenuItem(hSubMenu, ID, MF_UNCHECKED);
+	}
+	if (press)
+		CheckMenuItem(hSubMenu, IDS[id-1], MF_CHECKED);
+};

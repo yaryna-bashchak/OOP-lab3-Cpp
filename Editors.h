@@ -23,19 +23,6 @@ public:
 	}
 
 	void OnMouseMove(HWND hWnd) {};
-
-	void OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
-		HMENU hMenu, hSubMenu;
-		hMenu = GetMenu(hWnd);
-		hSubMenu = GetSubMenu(hMenu, 1);
-		if ((HMENU)wParam == hSubMenu)
-		{
-			CheckMenuItem(hSubMenu, IDM_POINT, MF_CHECKED);
-			CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-		}
-	};
 };
 
 /////////////////////////////////////////////////////
@@ -73,19 +60,6 @@ public:
 		}
 		
 	}
-
-	void OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
-		HMENU hMenu, hSubMenu;
-		hMenu = GetMenu(hWnd);
-		hSubMenu = GetSubMenu(hMenu, 1);
-		if ((HMENU)wParam == hSubMenu)
-		{
-			CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_LINE, MF_CHECKED);
-			CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-		}
-	};
 };
 
 //////////////////////////////////////////////////////
@@ -125,19 +99,6 @@ public:
 			DrawRect();
 		}	
 	}
-
-	void OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
-		HMENU hMenu, hSubMenu;
-		hMenu = GetMenu(hWnd);
-		hSubMenu = GetSubMenu(hMenu, 1);
-		if ((HMENU)wParam == hSubMenu)
-		{
-			CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_RECT, MF_CHECKED);
-			CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-		}
-	};
 };
 
 ///////////////////////////////////////////////////////
@@ -183,17 +144,4 @@ public:
 			DrawRect();
 		}
 	}
-
-	void OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
-		HMENU hMenu, hSubMenu;
-		hMenu = GetMenu(hWnd);
-		hSubMenu = GetSubMenu(hMenu, 1);
-		if ((HMENU)wParam == hSubMenu)
-		{
-			CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
-			CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_CHECKED);
-		}
-	};
 };

@@ -155,7 +155,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         object.OnPaint(hWnd);
         break;
     case WM_INITMENUPOPUP:
-        object.OnInitMenuPopup(hWnd, wParam);
+        object.OnInitMenuPopup(hWnd, wParam, ToolBar.LastID, ToolBar.press);
         break;
     case WM_COMMAND:
         {

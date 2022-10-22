@@ -4,7 +4,7 @@
 class ShapeEditor : public Editor
 {
 protected:
-    long xstart, ystart, xend, yend;
+    long xstart = 0, ystart = 0, xend = 0, yend = 0;
 	HWND hWnd;
 	HDC hdc;
 	HPEN hPen, hPenOld;
@@ -16,5 +16,5 @@ public:
 	virtual void OnLBup(HWND, Shape* p[], int) = 0;
 	virtual void OnMouseMove(HWND) = 0;
 	void OnPaint(HWND hWnd, Shape* pcshape[], int COUNT_OF_OBJECTS);
-	virtual void OnInitMenuPopup(HWND, WPARAM) = 0;
+	void OnInitMenuPopup(HWND, WPARAM, LPARAM, BOOL);
 };
