@@ -7,7 +7,7 @@ protected:
     long xstart = 0, ystart = 0, xend = 0, yend = 0;
 	HWND hWnd;
 	HDC hdc;
-	HPEN hPen, hPenOld;
+	HPEN hPenSolid, hPenOld;
 	void UpdateXY();
 	int Check();
 public:

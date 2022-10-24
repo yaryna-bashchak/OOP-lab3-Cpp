@@ -12,9 +12,13 @@
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
+BOOL press = FALSE;
+BOOL* ppress = &press;
+LPARAM LastButtonId = 0;
+LPARAM* pLastButtonId = &LastButtonId;
 
-ShapeObjectsEditor object;
-Toolbar ToolBar;
+ShapeObjectsEditor object(ppress, pLastButtonId);
+Toolbar ToolBar(ppress, pLastButtonId);
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -141,12 +145,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         ToolBar.OnNotify(hWnd, wParam, lParam);
         break;
     case WM_LBUTTONDOWN:
-        if (ToolBar.press)
-            object.OnLBdown(hWnd);
+        object.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        if (ToolBar.press)
-            object.OnLBup(hWnd);
+        object.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:
         object.OnMouseMove(hWnd);
@@ -155,7 +157,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         object.OnPaint(hWnd);
         break;
     case WM_INITMENUPOPUP:
-        object.OnInitMenuPopup(hWnd, wParam, ToolBar.LastID, ToolBar.press);
+        object.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_COMMAND:
         {

@@ -10,8 +10,10 @@ ShapeEditor* pse = NULL;
 
 int COUNT_OF_OBJECTS = 0;
 
-ShapeObjectsEditor::ShapeObjectsEditor(void) {
+ShapeObjectsEditor::ShapeObjectsEditor(BOOL* press, LPARAM* id) {
 	pCOUNT_OF_OBJECTS = &COUNT_OF_OBJECTS;
+	ppress = press;
+	pLastId = id;
 };
 
 void ShapeObjectsEditor::StartPointEditor(HWND hWnd) {
@@ -27,11 +29,12 @@ void ShapeObjectsEditor::StartEllipseEditor(HWND hWnd) {
 	pse = new EllipseEditor(hWnd);
 };
 void ShapeObjectsEditor::OnLBdown(HWND hWnd) {
-	if (pse)
+	if (pse && *ppress)
 		pse->OnLBdown(hWnd);
 };
 void ShapeObjectsEditor::OnLBup(HWND hWnd) {
-	if (pse) {
+	if (pse && *ppress)
+	{
 		pse->OnLBup(hWnd, pcshape, *pCOUNT_OF_OBJECTS);
 		(*pCOUNT_OF_OBJECTS)++;
 	}
@@ -44,7 +47,7 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd) {
 	pse->OnPaint(hWnd, pcshape, *pCOUNT_OF_OBJECTS);
 };
 
-void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam, LPARAM id, BOOL press) {
+void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
 	if (pse) 
-		pse->OnInitMenuPopup(hWnd, wParam, id, press);
+		pse->OnInitMenuPopup(hWnd, wParam, *pLastId, *ppress);
 }

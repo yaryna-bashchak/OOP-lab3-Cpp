@@ -6,8 +6,10 @@ class ShapeObjectsEditor
 {
 private:
 	int* pCOUNT_OF_OBJECTS;
+	BOOL* ppress;
+	LPARAM* pLastId;
 public:
-	ShapeObjectsEditor(void);
+	ShapeObjectsEditor(BOOL*, LPARAM*);
 	void StartPointEditor(HWND hWnd);
 	void StartLineEditor(HWND hWnd);
 	void StartRectEditor(HWND hWnd);
@@ -16,5 +18,5 @@ public:
 	void OnLBup(HWND hWnd);
 	void OnMouseMove(HWND hWnd);
 	void OnPaint(HWND hWnd);
-	void OnInitMenuPopup(HWND, WPARAM, LPARAM, BOOL);
+	void OnInitMenuPopup(HWND, WPARAM);
 };

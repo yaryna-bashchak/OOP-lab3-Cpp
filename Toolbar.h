@@ -10,9 +10,11 @@
 
 class Toolbar
 {
+private:
+    BOOL* ppress;
+    LPARAM* pLastId;
 public:
-    BOOL press = FALSE;
-    LPARAM LastID = 0;
+    Toolbar(BOOL*, LPARAM*);
 	void OnCreate(HWND, HINSTANCE);
     void OnSize(HWND hWnd);
     void OnPress(HWND hWnd, LPARAM id);

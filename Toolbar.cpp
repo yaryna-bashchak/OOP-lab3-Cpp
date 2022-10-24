@@ -7,6 +7,12 @@ int IDS[] = { ID_TOOL_POINT, ID_TOOL_LINE, ID_TOOL_RECT, ID_TOOL_ELLIPSE };
 const int COUNT_OF_BUTTONS = sizeof(IDS) / sizeof(int);
 TBBUTTON tbb[COUNT_OF_BUTTONS];
 
+Toolbar::Toolbar(BOOL* press, LPARAM* id)
+{
+    ppress = press;
+    pLastId = id;
+}
+
 void Toolbar::OnCreate(HWND hWnd, HINSTANCE hInst)
 {
     ZeroMemory(tbb, sizeof(tbb));
@@ -43,23 +49,23 @@ void Toolbar::OnSize(HWND hWnd)
 
 void Toolbar::OnPress(HWND hWnd, LPARAM id)
 {
-    if (LastID == id || !LastID)
+    if (*pLastId == id || !(*pLastId))
     {
-        press = !press;
+        *ppress = !(*ppress);
     }
 
-    if (press)
+    if (*ppress)
     {
         for (LPARAM ID : IDS)
             SendMessage(hwndToolBar, TB_PRESSBUTTON, ID, FALSE);
-        LastID = id;
+        *pLastId = id;
     }
     else
     {
-        LastID = 0;
+        *pLastId = 0;
     }
 
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, id, press);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, id, *ppress);
 }
 
 void Toolbar::OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)

@@ -7,8 +7,8 @@ UINT IDS[] = { IDM_POINT, IDM_LINE, IDM_RECT, IDM_ELLIPSE };
 ShapeEditor::ShapeEditor(HWND hwnd) {
 	hWnd = hwnd;
 	hdc = GetDC(hWnd);
-	hPen = CreatePen(PS_SOLID, 1, 0);
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
+	hPenSolid = CreatePen(PS_SOLID, 1, 0);
+	hPenOld = (HPEN)SelectObject(hdc, hPenSolid);
 };
 
 void ShapeEditor::UpdateXY()
