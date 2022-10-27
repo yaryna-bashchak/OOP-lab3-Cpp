@@ -1,16 +1,12 @@
 #pragma once
 #include <commctrl.h>
 #pragma comment(lib, "comctl32.lib")
-
-#define IDC_MY_TOOLBAR 1
-#define ID_TOOL_POINT 1
-#define ID_TOOL_LINE 2
-#define ID_TOOL_RECT 3
-#define ID_TOOL_ELLIPSE 4
+#include "resource.h"
 
 class Toolbar
 {
 private:
+    HWND hwndToolBar = NULL;
     BOOL* ppress;
     LPARAM* pLastId;
 public:

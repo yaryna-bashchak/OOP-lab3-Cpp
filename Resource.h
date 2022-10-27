@@ -22,6 +22,11 @@
 #define IDM_RECT                        32777
 #define IDM_ELLIPSE                     32778
 #define IDC_STATIC                      -1
+#define IDC_MY_TOOLBAR					1
+#define ID_TOOL_POINT					1
+#define ID_TOOL_LINE					2
+#define ID_TOOL_RECT					3
+#define ID_TOOL_ELLIPSE					4
 
 // Next default values for new objects
 // 

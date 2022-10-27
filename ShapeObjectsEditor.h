@@ -1,15 +1,13 @@
 #pragma once
 #include "Shape.h"
 #include "ShapeEditor.h"
+#include "Toolbar.h"
 
 class ShapeObjectsEditor
 {
 private:
-	int* pCOUNT_OF_OBJECTS;
-	BOOL* ppress;
-	LPARAM* pLastId;
+	int COUNT_OF_OBJECTS = 0;
 public:
-	ShapeObjectsEditor(BOOL*, LPARAM*);
 	void StartPointEditor(HWND hWnd);
 	void StartLineEditor(HWND hWnd);
 	void StartRectEditor(HWND hWnd);
@@ -19,4 +17,7 @@ public:
 	void OnMouseMove(HWND hWnd);
 	void OnPaint(HWND hWnd);
 	void OnInitMenuPopup(HWND, WPARAM);
+	void OnCreate(HWND, HINSTANCE);
+	void OnSize(HWND);
+	void OnNotify(HWND, WPARAM, LPARAM);
 };

@@ -73,21 +73,21 @@
   <Class Name="ShapeEditor" Collapsed="true">
     <Position X="3.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAaBAAgQAAACAAAAAAAAYAAAABAAEAAAEAAAAAAABAA=</HashCode>
+      <HashCode>AAeBAIgQAgACAAAEAAAAYAAAABAAAAAAEAAAAAAABAA=</HashCode>
       <FileName>ShapeEditor.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ShapeObjectsEditor" Collapsed="true">
-    <Position X="10" Y="0.75" Width="1.75" />
+    <Position X="8.75" Y="1" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AASAAAAAAAAAAAAAABAAQAAAABAAAAASEAgCAAAAAEA=</HashCode>
+      <HashCode>ACSAAAAAAAAAAAAAAFAAQAAAABAAAAASEAgCAAAAAEA=</HashCode>
       <FileName>ShapeObjectsEditor.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toolbar" Collapsed="true">
-    <Position X="10" Y="2" Width="1.75" />
+    <Position X="8.75" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAACBAAAAAAAAAgAAAAgA=</HashCode>
+      <HashCode>ACAAAAAAAAEAAAAAAEAAAAACACAAAAAAAAAAgAAAAgA=</HashCode>
       <FileName>Toolbar.h</FileName>
     </TypeIdentifier>
   </Class>

@@ -4,7 +4,6 @@
 #include "framework.h"
 #include "Lab3.h"
 #include "ShapeObjectsEditor.h"
-#include "Toolbar.h"
 
 #define MAX_LOADSTRING 100
 
@@ -12,13 +11,8 @@
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
-BOOL press = FALSE;
-BOOL* ppress = &press;
-LPARAM LastButtonId = 0;
-LPARAM* pLastButtonId = &LastButtonId;
 
-ShapeObjectsEditor object(ppress, pLastButtonId);
-Toolbar ToolBar(ppress, pLastButtonId);
+ShapeObjectsEditor object;
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -136,13 +130,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
-        ToolBar.OnCreate(hWnd, hInst);
+        object.OnCreate(hWnd, hInst);
         break;
     case WM_SIZE:
-        ToolBar.OnSize(hWnd);
+        object.OnSize(hWnd);
         break;
     case WM_NOTIFY:
-        ToolBar.OnNotify(hWnd, wParam, lParam);
+        object.OnNotify(hWnd, wParam, lParam);
         break;
     case WM_LBUTTONDOWN:
         object.OnLBdown(hWnd);
@@ -168,25 +162,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case ID_TOOL_POINT:
             case IDM_POINT:
-                ToolBar.OnPress(hWnd, ID_TOOL_POINT);
                 object.StartPointEditor(hWnd);
                 break;
 
             case ID_TOOL_LINE:
             case IDM_LINE:
-                ToolBar.OnPress(hWnd, ID_TOOL_LINE);
                 object.StartLineEditor(hWnd);
                 break;
 
             case ID_TOOL_RECT:
             case IDM_RECT:
-                ToolBar.OnPress(hWnd, ID_TOOL_RECT);
                 object.StartRectEditor(hWnd);
                 break;
 
             case ID_TOOL_ELLIPSE:
             case IDM_ELLIPSE:
-                ToolBar.OnPress(hWnd, ID_TOOL_ELLIPSE);
                 object.StartEllipseEditor(hWnd);
                 break;
 

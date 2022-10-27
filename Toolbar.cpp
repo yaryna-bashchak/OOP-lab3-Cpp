@@ -1,8 +1,6 @@
 #include "framework.h"
 #include "Toolbar.h"
-#include "resource.h"
 
-HWND hwndToolBar = NULL;
 int IDS[] = { ID_TOOL_POINT, ID_TOOL_LINE, ID_TOOL_RECT, ID_TOOL_ELLIPSE };
 const int COUNT_OF_BUTTONS = sizeof(IDS) / sizeof(int);
 TBBUTTON tbb[COUNT_OF_BUTTONS];
@@ -24,15 +22,15 @@ void Toolbar::OnCreate(HWND hWnd, HINSTANCE hInst)
         tbb[i].idCommand = IDS[i];
     }
 
-    hwndToolBar = CreateToolbarEx(hWnd, //батьківське вікно
+    hwndToolBar = CreateToolbarEx(hWnd,
         WS_CHILD | WS_VISIBLE | WS_BORDER
         | WS_CLIPSIBLINGS | CCS_TOP |
         TBSTYLE_TOOLTIPS,
-        IDC_MY_TOOLBAR, //ID дочірнього вікна Toolbar
+        IDC_MY_TOOLBAR,
         COUNT_OF_BUTTONS, hInst, IDB_BITMAP1,
         tbb,
-        COUNT_OF_BUTTONS, //кількість кнопок
-        24, 24, 24, 24, //розташування та розміри
+        COUNT_OF_BUTTONS,
+        24, 24, 24, 24,
         sizeof(TBBUTTON));
 }
 
@@ -41,8 +39,8 @@ void Toolbar::OnSize(HWND hWnd)
     RECT rc, rw;
     if (hwndToolBar)
     {
-        GetClientRect(hWnd, &rc); //нові розміри головного вікна
-        GetWindowRect(hwndToolBar, &rw); //нам потрібно знати висоту Toolbar
+        GetClientRect(hWnd, &rc);
+        GetWindowRect(hwndToolBar, &rw);
         MoveWindow(hwndToolBar, 0, 0, rc.right - rc.left, rw.bottom - rw.top, FALSE);
     }
 }
