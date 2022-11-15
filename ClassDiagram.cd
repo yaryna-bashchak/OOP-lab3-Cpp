@@ -1,93 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Editor" Collapsed="true">
+  <Class Name="Shape" Collapsed="true">
     <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>Editor.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PointEditor" Collapsed="true">
-    <Position X="3" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAIAAAAAAQAAAABAAAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>editors.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LineEditor" Collapsed="true">
-    <Position X="4.75" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAEAAAAAAAAE=</HashCode>
-      <FileName>editors.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RectEditor" Collapsed="true">
-    <Position X="6.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAQBAAAAAAACAAAAAAAAA=</HashCode>
-      <FileName>editors.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EllipseEditor" Collapsed="true">
-    <Position X="1.25" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAAAwAAAQBAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>editors.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Shape" Collapsed="true">
-    <Position X="3.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAgAAAAAABAAAEEGAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAAEgAAAAIAABACAAAAAgEABQAAEEGIAAEAAABAAAAA=</HashCode>
       <FileName>Shape.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PointShape" Collapsed="true">
-    <Position X="4.75" Y="5" Width="1.5" />
+  <Class Name="MyEditor" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IASAAAAEACEAAAAAAAAAQAAAADAAAAAAEAAAgAAAAAg=</HashCode>
+      <FileName>MyEditor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Point" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgACAAAAAAAAAAAAEEAIAAAAAAAAAAAA=</HashCode>
       <FileName>shapes.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LineShape" Collapsed="true">
-    <Position X="6.5" Y="5" Width="1.5" />
+  <Class Name="Line" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAABAAA=</HashCode>
       <FileName>shapes.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RectShape" Collapsed="true">
-    <Position X="1.25" Y="5" Width="1.5" />
+  <Class Name="Rect" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAEAAIAAAAAAAAAAAA=</HashCode>
       <FileName>shapes.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EllipseShape" Collapsed="true">
-    <Position X="3" Y="5" Width="1.5" />
+  <Class Name="Elipse" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEQAIAAAAAAAAAAAA=</HashCode>
       <FileName>shapes.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShapeEditor" Collapsed="true">
-    <Position X="3.75" Y="1.5" Width="1.5" />
+  <Class Name="OLineO" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAeBAIgQAgACAAAEAAAAYAAAABAAAAAAEAAAAAAABAA=</HashCode>
-      <FileName>ShapeEditor.h</FileName>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>shapes.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShapeObjectsEditor" Collapsed="true">
-    <Position X="8.75" Y="1" Width="1.75" />
+  <Class Name="Cube" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACSAAAAAAAAAAAAAAFAAQAAAABAAAAASEAgCAAAAAEA=</HashCode>
-      <FileName>ShapeObjectsEditor.h</FileName>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>shapes.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toolbar" Collapsed="true">
-    <Position X="8.75" Y="2" Width="1.75" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAEAAAAAAEAAAAACACAAAAAAAAAAgAAAAgA=</HashCode>
+      <HashCode>ACAAAAAAAAEAAAAAAkAAAAACACAAAAAAAAAAgAAAAgA=</HashCode>
       <FileName>Toolbar.h</FileName>
     </TypeIdentifier>
   </Class>
